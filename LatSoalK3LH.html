@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Soal Interaktif</title>
+</head>
+<body>
+  <h1>Latihan Soal Interaktif</h1>
+  <div id="quiz"></div>
+
+  <script>
+    const questions = [
+      {q:"Profesi yang bertugas membuat, menguji, dan memelihara kode program disebut …", a:["Software Tester","Programmer","Database Engineer","System Analyst","UI Designer"], c:1},
+      {q:"Tugas utama seorang System Analyst adalah …", a:["Menulis kode program","Menganalisis kebutuhan sistem dan merancang solusi perangkat lunak","Mendesain tampilan aplikasi","Menguji aplikasi","Mengatur jaringan"], c:1},
+      {q:"Profesi yang bertanggung jawab dalam membuat antarmuka pengguna disebut …", a:["Network Engineer","Database Administrator","UI/UX Designer","System Analyst","Web Tester"], c:2},
+      {q:"Profesi Software Engineer mencakup kemampuan untuk …", a:["Mendesain pakaian","Menulis, menguji, dan memelihara perangkat lunak","Mengelola keuangan","Membuat laporan administrasi","Mendesain rumah"], c:1},
+      {q:"Orang yang bertugas memastikan program bebas dari kesalahan adalah …", a:["Software Tester","Programmer","Designer","Operator","Supervisor"], c:0},
+
+      // === LANJUTAN 6–60 ===
+      {q:"Database Administrator bertanggung jawab untuk …", a:["Menulis algoritma","Mengelola, menjaga keamanan, dan kinerja basis data","Mendesain tampilan","Mengedit gambar","Membuat laporan manual"], c:1},
+      {q:"Profesi Full Stack Developer menguasai …", a:["Backend saja","Frontend saja","Frontend dan Backend","Desain grafis","Database saja"], c:2},
+      {q:"Profesi yang berperan dalam menjaga keamanan sistem disebut …", a:["Programmer","System Analyst","Cyber Security Specialist","Web Developer","Designer"], c:2},
+      {q:"Profesi Web Developer berfokus pada …", a:["Pembuatan situs web","Pengelolaan jaringan","Perawatan komputer","Analisis bisnis","Pembuatan laporan"], c:0},
+      {q:"Project Manager bertanggung jawab terhadap …", a:["Manajemen waktu, tim, dan sumber daya proyek","Penulisan kode program","Pengujian sistem","Desain UI","Pengelolaan server"], c:0},
+
+      {q:"Profesi berikut yang tidak termasuk dalam bidang RPL adalah …", a:["Software Developer","Web Designer","Data Scientist","Akuntan","QA Engineer"], c:3},
+      {q:"Sikap profesional seorang programmer adalah …", a:["Teliti, disiplin, dan bertanggung jawab","Asal cepat selesai","Mengabaikan bug","Menyalin kode tanpa izin","Tidak mau belajar hal baru"], c:0},
+      {q:"Profesi yang menggabungkan seni dan teknologi untuk membuat tampilan menarik disebut …", a:["UI/UX Designer","Network Engineer","Hardware Technician","Data Analyst","Database Administrator"], c:0},
+      {q:"Kemampuan utama seorang Software Developer adalah …", a:["Menjahit","Problem Solving","Public Speaking","Menyanyi","Menulis puisi"], c:1},
+      {q:"Profesi yang mempelajari dan mengolah data dalam jumlah besar adalah …", a:["Data Scientist","UI Designer","Hardware Engineer","Game Developer","Database Entry"], c:0},
+
+      {q:"Dalam RPL, istilah Maintenance berarti …", a:["Menghapus sistem","Mengupdate dan memperbaiki sistem","Mendesain ulang","Menjual aplikasi","Mempromosikan sistem"], c:1},
+      {q:"Profesionalisme berarti …", a:["Bekerja sesuai etika dan tanggung jawab","Bekerja tanpa aturan","Mengabaikan waktu","Asal menghasilkan","Tidak memperhatikan kualitas"], c:0},
+      {q:"Profesi Game Developer berfokus pada …", a:["Pembuatan game digital","Pembuatan video","Analisis data","Pembuatan laporan","Pengaturan server"], c:0},
+      {q:"Etika profesi diperlukan agar …", a:["Data aman dan kepercayaan klien terjaga","Pekerjaan cepat selesai","Programmer bebas berkreasi","Klien tidak dilibatkan","Tim bisa bekerja asal-asalan"], c:0},
+      {q:"Profesi yang membuat dokumentasi teknis sistem adalah …", a:["Technical Writer","Designer","System Analyst","Programmer","Editor"], c:0},
+
+      {q:"Dalam tim RPL, tanggung jawab utama Software Tester adalah …", a:["Menulis kode","Menguji fungsi dan bug program","Mendesain sistem","Mengelola server","Membuat database"], c:1},
+      {q:"Profesi yang memastikan integritas data tetap aman disebut …", a:["Database Administrator","Designer","Developer","Writer","Editor"], c:0},
+      {q:"Seorang System Analyst harus memiliki kemampuan …", a:["Menganalisis kebutuhan dan membuat rancangan sistem","Mendesain pakaian","Membuat musik","Mengedit gambar","Memperbaiki printer"], c:0},
+      {q:"Profesi yang menangani tampilan visual aplikasi disebut …", a:["UI Designer","Network Technician","Software Tester","Project Manager","Database Engineer"], c:0},
+      {q:"Backend Developer bekerja pada …", a:["Tampilan depan","Logika, server, dan database","Desain grafis","Sistem operasi","Promosi aplikasi"], c:1},
+
+      {q:"Kemampuan komunikasi sangat penting bagi profesi …", a:["Project Manager","Backend Developer","Programmer","Data Analyst","UI Designer"], c:0},
+      {q:"Profesi DevOps Engineer berfungsi untuk …", a:["Menyatukan proses pengembangan dan operasional sistem","Mendesain UI","Menguji aplikasi","Membuat laporan","Menyusun algoritma"], c:0},
+      {q:"Profesi berikut membutuhkan pemahaman tentang jaringan:", a:["Network Engineer","Designer","Editor","Technical Writer","Tester"], c:0},
+      {q:"Dalam dunia kerja IT, sertifikasi profesional berguna untuk …", a:["Meningkatkan kepercayaan dan peluang karier","Mengurangi kompetisi","Menghapus tanggung jawab","Mempermudah plagiarisme","Menghindari evaluasi"], c:0},
+      {q:"Profesi yang menulis skrip otomatisasi deployment adalah …", a:["DevOps Engineer","Web Designer","Tester","Project Manager","UI Designer"], c:0},
+
+      {q:"Profesi AI Engineer berhubungan dengan …", a:["Kecerdasan buatan","Desain web","Pengujian aplikasi","Pengelolaan jaringan","Editing video"], c:0},
+      {q:"Seorang Data Analyst harus mampu …", a:["Menganalisis dan menafsirkan data","Membuat animasi","Mendesain logo","Menulis artikel","Mengelola server"], c:0},
+      {q:"Profesi Mobile Developer berfokus pada …", a:["Aplikasi smartphone","Aplikasi desktop","Game PC","Sistem server","Perangkat keras"], c:0},
+      {q:"Profesi QA Engineer berperan dalam …", a:["Menjamin kualitas perangkat lunak","Mendesain UI","Membuat server","Mengelola database","Menulis artikel"], c:0},
+      {q:"Profesi Cloud Engineer bertugas dalam …", a:["Mengelola layanan berbasis cloud","Mendesain tampilan web","Membuat aplikasi desktop","Menguji game","Menulis algoritma"], c:0},
+
+      {q:"SWOT adalah singkatan dari …", a:["Strength, Weakness, Opportunity, Threat","System, Work, Option, Task","Software, Work, Output, Technology","Strategy, Weakness, Operation, Target","Strength, Work, Operation, Team"], c:0},
+      {q:"Analisis SWOT digunakan untuk …", a:["Menilai kondisi internal dan eksternal organisasi","Mendesain aplikasi","Membuat laporan keuangan","Mengatur jaringan","Mengedit video"], c:0},
+      {q:"Strength adalah …", a:["Kelemahan","Kekuatan","Peluang","Ancaman","Hambatan"], c:1},
+      {q:"Weakness adalah …", a:["Ancaman dari luar","Kelemahan internal","Kekuatan sistem","Peluang bisnis","Target jangka panjang"], c:1},
+      {q:"Opportunity termasuk faktor …", a:["Internal","Eksternal","Pribadi","Organisasi","Lingkungan dalam"], c:1},
+
+      {q:"Threat berarti …", a:["Kekuatan","Peluang","Ancaman","Keuntungan","Risiko internal"], c:2},
+      {q:"Faktor internal dalam SWOT mencakup …", a:["Strength dan Weakness","Opportunity dan Threat","Strength dan Threat","Weakness dan Opportunity","Semua salah"], c:0},
+      {q:"Faktor eksternal dalam SWOT mencakup …", a:["Strength dan Weakness","Opportunity dan Threat","Weakness dan Threat","Strength dan Opportunity","Strength dan Weakness"], c:1},
+      {q:"Tujuan utama analisis SWOT adalah …", a:["Menentukan strategi berdasarkan kondisi internal dan eksternal","Mendesain sistem","Menulis kode","Membuat laporan","Mengatur keuangan"], c:0},
+      {q:"Contoh Strength bagi siswa RPL adalah …", a:["Menguasai bahasa pemrograman","Tidak disiplin","Kurang percaya diri","Sering absen","Tidak aktif"], c:0},
+
+      {q:"Contoh Weakness dalam diri pelajar adalah …", a:["Kurang teliti dalam coding","Kreatif","Rajin","Disiplin","Bertanggung jawab"], c:0},
+      {q:"Contoh Opportunity bagi lulusan RPL adalah …", a:["Permintaan tinggi terhadap tenaga IT","Kurangnya fasilitas","Banyak pesaing","Tidak ada koneksi internet","Sulitnya adaptasi teknologi"], c:0},
+      {q:"Contoh Threat bagi profesi RPL adalah …", a:["Perubahan teknologi yang cepat","Banyak peluang kerja","Dukungan pemerintah","Pelatihan coding gratis","Kebutuhan pasar tinggi"], c:0},
+      {q:"Dalam analisis SWOT, langkah pertama adalah …", a:["Mengidentifikasi kekuatan dan kelemahan","Membuat strategi","Menggambar diagram","Menghitung modal","Menentukan target"], c:0},
+      {q:"Analisis SWOT membantu individu untuk …", a:["Mengenal potensi diri","Menghindari pekerjaan","Menyembunyikan kelemahan","Mengabaikan ancaman","Menurunkan semangat"], c:0},
+
+      {q:"Hasil SWOT digunakan untuk menyusun …", a:["Strategi pengembangan","Laporan penjualan","Daftar aset","Daftar siswa","Daftar pustaka"], c:0},
+      {q:"Jika peluang tinggi tetapi kekuatan rendah, strategi yang cocok adalah …", a:["Memanfaatkan peluang dengan meningkatkan kekuatan","Menyerah","Mengabaikan peluang","Menghapus kelemahan","Bertahan"], c:0},
+      {q:"Jika kekuatan dan peluang sama-sama tinggi, strategi terbaik adalah …", a:["Agresif (SO Strategy)","Defensif","Bertahan","Diversifikasi","Menghindar"], c:0},
+      {q:"Jika kelemahan dan ancaman tinggi, strategi yang tepat adalah …", a:["Bertahan (WT Strategy)","Agresif","Progresif","Penyerangan","Penghindaran"], c:0},
+      {q:"Analisis SWOT dapat diterapkan pada …", a:["Individu maupun organisasi","Pemerintah saja","Perusahaan besar saja","Pelajar saja","Bidang ekonomi saja"], c:0},
+
+      {q:"Analisis SWOT bersifat …", a:["Kualitatif","Kuantitatif","Numerik","Statistik","Eksperimen"], c:0},
+      {q:"Threat dapat diminimalkan dengan …", a:["Strategi pencegahan dan adaptasi","Mengabaikan masalah","Tidak berubah","Menunda kerja","Menghapus peluang"], c:0},
+      {q:"Kekuatan yang tidak dimanfaatkan dapat menjadi …", a:["Kelemahan","Peluang","Ancaman","Keuntungan","Motivasi"], c:0},
+      {q:"Kelemahan dapat diperbaiki dengan cara …", a:["Meningkatkan kemampuan dan disiplin diri","Menghindari pekerjaan","Menyalahkan orang lain","Mengabaikan masalah","Menurunkan target"], c:0},
+      {q:"Kesimpulan akhir dari analisis SWOT adalah …", a:["Strategi terbaik untuk mencapai tujuan","Daftar kekurangan","Daftar pekerjaan","Laporan keuangan","Jadwal kerja"], c:0}
+    ];
+
+    const quizDiv = document.getElementById("quiz");
+
+    questions.forEach((item, index) => {
+      const card = document.createElement("div");
+      card.id = `q${index}`;
+      const q = document.createElement("p");
+      q.innerText = `${index+1}. ${item.q}`;
+      card.appendChild(q);
+
+      item.a.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.innerText = opt;
+        btn.onclick = () => {
+          btn.clicked = true;
+          if(i === item.c) {
+            btn.style.background='green'; btn.style.color='white';
+            alert('Jawaban benar!');
+          } else {
+            btn.style.background='red'; btn.style.color='white';
+            alert('Jawaban salah!');
+          }
+        };
+        card.appendChild(btn);
+        card.appendChild(document.createElement('br'));
+      });
+
+      quizDiv.appendChild(card);
+    });
+    function selesai(){
+    let benar = 0;
+    questions.forEach((q,i)=>{
+      const buttons = document.querySelectorAll(`#q${i} button`);
+      buttons.forEach((b,idx)=>{
+        if(idx===q.c && b.clicked){ benar++; }
+      });
+    });
+    alert("Skor kamu: " + benar + " dari " + questions.length);
+  }
+</script>
+<button onclick="selesai()">Selesai</button>
+</body>
+</html>
